@@ -26,3 +26,13 @@ class BmiCatRisk:
 			response_data.append(record)
 
 		return response_data
+
+	@staticmethod
+	def get_cat_count(request_data):
+		response_data = {"overweight": 0}
+		for record in request_data:
+			heightm = record.get("HeightCm") / 100
+			bmi = round(record.get("WeightKg") / (heightm * heightm))
+			if bmi <= 29.9 and bmi >= 24.9:
+				response_data["overweight"] += 1
+		return response_data

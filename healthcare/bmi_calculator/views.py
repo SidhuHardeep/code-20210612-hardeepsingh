@@ -7,3 +7,8 @@ from bmi_calculator.services import BmiCatRisk
 class BmiCalculator(APIView):
 	def post(self, request):
 		return Response(BmiCatRisk.get_bmi_cat_risk(request.data))
+
+
+class CategoryCount(APIView):
+	def post(self, request):
+		return Response(BmiCatRisk.get_cat_count(request.data))
